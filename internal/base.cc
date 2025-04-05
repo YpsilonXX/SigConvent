@@ -6,7 +6,7 @@ void clearConsole() {
 
 namespace ypsbit
 {
-    bool get_bit(uint8_t src, uint8_t pos)
+    uint16_t get_bit(uint8_t src, uint8_t pos)
     {
         return (src >> pos) & 1;
     }

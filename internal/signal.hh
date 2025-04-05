@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <vector>
 #include <fstream>
+#include <algorithm>
 
 #include "defines.hh"
 #include "base.hh"
@@ -19,11 +20,16 @@ class Signal{
 private:
     std::vector<SBlock> blocks;
 
+    /**
+     * Read to this->block from buff (for read(), fread())
+     * \param buff Signal to read
+     */
+    void read_to_block_from_buff(std::string& buff);
 
 public:
 
     /**
-     * Read signal from console.
+     * Read signal from console. Removing spaces if exist
      */
     void read();
     /**

@@ -1,17 +1,9 @@
 #include "signal.hh"
 
-void Signal::read()
+void Signal::read_to_block_from_buff(std::string& buff)
 {
-    std::string buff;
-
-    /*Delete old data*/
-    this->blocks.clear();
-
-    /*Get line with signal*/
-    std::cout << CLI_GREEN << "---------New Signal---------" << CLI_RESET << std::endl;
-    std::cout << "Enter signal (with 0 or 1): " << std::endl;
-    std::getline(std::cin, buff);
-    std::cout << CLI_GREEN << "----------------------------" << CLI_RESET << std::endl;
+    if(buff.size() % 4 != 0)
+        std::cout << CLI_YELLOW_B << "Warning: Size of signal in not multiplied by 4" << CLI_RESET << std::endl;
 
     /**
      * Group bits with size = 4
@@ -21,9 +13,9 @@ void Signal::read()
     {
         SBlock temp_block; uint8_t temp = 0;
         
-        for(int j = 0; j < 4; j++)//Setting bits
+        for(size_t j = 0; j < 4; j++)//Setting bits
         {
-            switch (buff[i+j])
+            switch (buff[4*i+j])
             {
             case '0':
                 temp = ypsbit::clear_bit(temp, j);
@@ -40,11 +32,53 @@ void Signal::read()
 
         temp_block.sigblock = temp;
         this->blocks.emplace_back(temp_block);
+        i++;
     }
 
+    /*Allignment*/
+    if(this->blocks.size() % 4 != 0)
+    {
+        uint8_t shift = this->blocks.size() % 4;
+        for(size_t i = 0; i < 4 - shift; i++)
+        {
+            SBlock temp_block; uint8_t temp = 0;
+            temp_block.sigblock = temp;
+            this->blocks.emplace_back(temp_block);
+        }
+    }
+}
+
+void Signal::read()
+{
+    std::string buff;
+
+    /*Delete old data*/
+    this->blocks.clear();
+
+    /*Get line with signal*/
+    std::cout << CLI_GREEN << "---------New Signal---------" << CLI_RESET << std::endl;
+    std::cout << "Enter signal (with 0 or 1): " << std::endl;
+    std::getline(std::cin, buff);
+    buff.erase(std::remove(buff.begin(), buff.end(), ' '), buff.end()); //Remove spaces if exist
+    std::cout << CLI_GREEN << "----------------------------" << CLI_RESET << std::endl;
+
+    this->read_to_block_from_buff(buff);
 }
 
 void Signal::display()
 {
-    
+    std::cout << CLI_GREEN << "---------Signal Out---------" << CLI_RESET << std::endl;
+    for(size_t i = 0; i < this->blocks.size()/4; i++)
+    {
+        std::cout << CLI_MAGENTA_B << i*4 << ":\t" << CLI_RESET;
+        for(size_t j = 0; j < 4; j++)
+        {
+            std::cout << ypsbit::get_bit(this->blocks[i*4 + j].sigblock, 0);
+            std::cout << ypsbit::get_bit(this->blocks[i*4 + j].sigblock, 1);
+            std::cout << ypsbit::get_bit(this->blocks[i*4 + j].sigblock, 2);
+            std::cout << ypsbit::get_bit(this->blocks[i*4 + j].sigblock, 3) << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << CLI_GREEN << "----------------------------" << CLI_RESET << std::endl;
 }
