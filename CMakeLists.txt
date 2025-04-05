@@ -15,3 +15,6 @@ include_directories(internal/)
 
 project(${PROJECT_NAME})
 add_executable(${PROJECT_NAME} ${SRC})
+
+
+file(COPY in.txt DESTINATION ${CMAKE_BINARY_DIR})

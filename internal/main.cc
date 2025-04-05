@@ -10,7 +10,8 @@ int main()
 {
     Signal sig;
 
-    sig.read();
+
+    sig.fread();
     sig.display();
 
     return 0;

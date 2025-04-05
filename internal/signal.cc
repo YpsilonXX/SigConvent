@@ -65,6 +65,23 @@ void Signal::read()
     this->read_to_block_from_buff(buff);
 }
 
+void Signal::fread(std::string path)
+{
+    std::ifstream file(path);
+    std::stringstream buffer;
+
+    buffer << file.rdbuf();
+    std::string signal = buffer.str();
+    signal.erase(std::remove(signal.begin(), signal.end(), ' '), signal.end());//Remove spaces if exist
+
+    this->read_to_block_from_buff(signal);
+}
+
+std::vector<SBlock> Signal::get_blocks()
+{
+    return this->blocks;
+}
+
 void Signal::display()
 {
     std::cout << CLI_GREEN << "---------Signal Out---------" << CLI_RESET << std::endl;
