@@ -9,6 +9,8 @@ set(SRC                                                     #Files for compiling
     internal/main.cc
     internal/signal.cc
     internal/base.cc
+    internal/baseconverter.cc
+    internal/4B3T.cc
 )
 
 include_directories(internal/)

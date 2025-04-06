@@ -68,6 +68,10 @@ void Signal::read()
 void Signal::fread(std::string path)
 {
     std::ifstream file(path);
+    if(!file.is_open())
+    {
+        std::cerr << CLI_RED_B << "Error to open file(fread)" << CLI_RESET << std::endl;
+    }
     std::stringstream buffer;
 
     buffer << file.rdbuf();
