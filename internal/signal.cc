@@ -103,3 +103,4 @@ void Signal::display()
     }
     std::cout << CLI_GREEN << "----------------------------" << CLI_RESET << std::endl;
 }
+

@@ -17,6 +17,7 @@ int main()
     Conv4B3T con;
     std::vector<SBlock> signal = sig.get_blocks();
     con.convert_to_console(0, signal);
+    con.convert_to_console(0, signal);
     con.convert_to_file(0, signal, "../build/out.txt");
 
     return 0;

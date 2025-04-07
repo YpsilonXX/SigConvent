@@ -38,11 +38,19 @@ public:
      * \param path File with signal
      */
     void fread(std::string path = "in.txt");
-
+    /**
+     * Get signal blocks
+     * \return blocks's vector
+     */
     std::vector<SBlock> get_blocks();
-
+    /**
+     * Display signal in console
+     */
     void display();
-
+    /**
+     * Draw signal in console
+     */
+    void draw();
 };
 
 #endif//YPSSIGNAL
