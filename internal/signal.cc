@@ -18,10 +18,10 @@ void Signal::read_to_block_from_buff(std::string& buff)
             switch (buff[4*i+j])
             {
             case '0':
-                temp = ypsbit::clear_bit(temp, j);
+                temp = ypsbit::clear_bit(temp, 3-j);
                 break;
             case '1':
-                temp = ypsbit::set_bit(temp, j);
+                temp = ypsbit::set_bit(temp, 3-j);
                 break;
             default:
                 std::cerr << CLI_RED_B << "Error input: only '0' or '1' for signal" << CLI_RESET << std::endl;
@@ -94,10 +94,10 @@ void Signal::display()
         std::cout << CLI_MAGENTA_B << i*4 << ":\t" << CLI_RESET;
         for(size_t j = 0; j < 4; j++)
         {
-            std::cout << ypsbit::get_bit(this->blocks[i*4 + j].sigblock, 0);
-            std::cout << ypsbit::get_bit(this->blocks[i*4 + j].sigblock, 1);
+            std::cout << ypsbit::get_bit(this->blocks[i*4 + j].sigblock, 3);
             std::cout << ypsbit::get_bit(this->blocks[i*4 + j].sigblock, 2);
-            std::cout << ypsbit::get_bit(this->blocks[i*4 + j].sigblock, 3) << " ";
+            std::cout << ypsbit::get_bit(this->blocks[i*4 + j].sigblock, 1);
+            std::cout << ypsbit::get_bit(this->blocks[i*4 + j].sigblock, 0) << " ";
         }
         std::cout << std::endl;
     }
