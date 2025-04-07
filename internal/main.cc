@@ -6,6 +6,7 @@
 #include "defines.hh"
 #include "base.hh"
 #include "4B3T.hh"
+#include "FOMOT.hh"
 
 int main()
 {
@@ -14,7 +15,7 @@ int main()
     sig.fread("../build/in.txt");
     sig.display();
 
-    Conv4B3T con;
+    ConvFOMOT con;
     std::vector<SBlock> signal = sig.get_blocks();
     con.convert_to_console(0, signal);
     con.convert_to_console(0, signal);
