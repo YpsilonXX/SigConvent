@@ -12,6 +12,8 @@ set(SRC                                                     #Files for compiling
     internal/baseconverter.cc
     internal/4B3T.cc
     internal/FOMOT.cc
+    internal/settings.cc
+    internal/app.cc
 )
 
 include_directories(internal/)
