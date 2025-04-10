@@ -12,8 +12,12 @@ struct Settings
 
     /*Start mode's value*/
     int8_t start_mode;
+    /*Is output to file*/
+    bool in_file;
 };
 
 extern std::string main_label;
+extern std::string yps_text_in_file;
+extern std::string yps_text_in_console;
 
 #endif//CONVSETT

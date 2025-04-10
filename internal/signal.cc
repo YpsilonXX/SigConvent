@@ -57,7 +57,11 @@ void Signal::read()
 
     /*Get line with signal*/
     std::cout << CLI_GREEN << "---------New Signal---------" << CLI_RESET << std::endl;
-    std::cout << "Enter signal (with 0 or 1): " << std::endl;
+    std::cout << CLI_YELLOW_B << "Enter signal (with 0 or 1): " << std::endl;
+    /*Delete new line symbol from buffer cin to read line correctly*/
+    if (std::cin.peek() == '\n')
+    std::cin.ignore();
+
     std::getline(std::cin, buff);
     buff.erase(std::remove(buff.begin(), buff.end(), ' '), buff.end()); //Remove spaces if exist
     std::cout << CLI_GREEN << "----------------------------" << CLI_RESET << std::endl;

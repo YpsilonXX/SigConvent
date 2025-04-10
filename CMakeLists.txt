@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.12)
+set(CMAKE_CXX_STANDARD 17)
 
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type" FORCE)
@@ -14,6 +15,7 @@ set(SRC                                                     #Files for compiling
     internal/FOMOT.cc
     internal/settings.cc
     internal/app.cc
+    internal/input.cc
 )
 
 include_directories(internal/)
@@ -22,4 +24,4 @@ project(${PROJECT_NAME})
 add_executable(${PROJECT_NAME} ${SRC})
 
 
-file(COPY in.txt DESTINATION ${CMAKE_BINARY_DIR})
+file(COPY in.txt DESTINATION ${CMAKE_BINARY_DIR})     
