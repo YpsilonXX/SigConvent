@@ -1,6 +1,7 @@
 #ifndef CONVSETT
 #define CONVSETT
 #include <iostream>
+#include <cstdint>
 #include "defines.hh"
 
 struct Settings
