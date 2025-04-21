@@ -5,8 +5,8 @@
 <p align="center" >
     <img src="pict/win.svg" alt="win" width="75">
     <img src="pict/linux.svg" alt="linux" width="75">
-    <img src="pict/cxx.svg" alt="cxx" width="75">
-    <img src="pict/version.svg" alt="version" width="90">
+    <img src="pict/cxx.svg" alt="cxx" width="82">
+    <img src="pict/version.svg" alt="version" width="125">
 </p>
 
 # English
