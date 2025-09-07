@@ -2,7 +2,7 @@
 
 void baseconvert::convert_to_console(int32_t param, std::vector<SBlock>& blocks)
 {
-    /*Make convertation to new type*/
+    /*Make conversation to new type*/
     this->convert(param, blocks);
 
     /*Base print to console*/

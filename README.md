@@ -29,7 +29,7 @@ For use with files:
 * Switch input/output in option 3.
 * If necessary, specify the file paths in options 4 and 5.
 * Select option 1 or 2 to convert to the desired format.
-* Enter start sum
+* Enter start sum.
 * You have received the response.
 
 
